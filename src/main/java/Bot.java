@@ -23,7 +23,6 @@ import static data.Credentials.botApiToken;
 import static data.Credentials.botUserName;
 import static helpers.CheckRegexp.checkPrice;
 import static helpers.OkHttpClient.defaultHttpClient;
-import static helpers.StoreValues.storeValues;
 import static java.util.Objects.requireNonNull;
 
 public class Bot extends TelegramLongPollingBot {
@@ -59,7 +58,6 @@ public class Bot extends TelegramLongPollingBot {
     //Message after /start
     private synchronized void sendStartMsg(Update update, String chatId, String messageText) {
         if (update.getMessage().getText().equals("/start")) {
-            storeValues("start value", update.getMessage().getText());
             SendMessage message = new SendMessage()
                     .setChatId(chatId)
                     .setText(messageText);
@@ -100,7 +98,6 @@ public class Bot extends TelegramLongPollingBot {
     //Zip code search
 //    private synchronized void zipCodeSearch(Update update, String chatId) throws IOException {
 //        if (checkZip(update.getMessage().getText())) {
-//            storeValues("zip", update.getMessage().getText());
 //            SendMessage message = new SendMessage()
 //                    .setChatId(chatId)
 //                    .setText("Ok, Search started");
@@ -212,10 +209,10 @@ public class Bot extends TelegramLongPollingBot {
             sourceMap.add("https://www.zillow.com" + searchResults.getJSONObject(i).get("detailUrl").toString());
         }
 
-        System.out.println(sourceMap.size());
+//        System.out.println(sourceMap.size());
 
-        System.out.println("source list");
-        sourceMap.forEach(System.out::println);
+//        System.out.println("source list");
+//        sourceMap.forEach(System.out::println);
     }
 
     //Get new list of flats
@@ -227,8 +224,8 @@ public class Bot extends TelegramLongPollingBot {
             newMap.add("https://www.zillow.com" + searchResults.getJSONObject(i).get("detailUrl").toString());
         }
 
-        System.out.println("new List");
-        newMap.forEach(System.out::println);
+//        System.out.println("new List");
+//        newMap.forEach(System.out::println);
     }
 
     //Getting actual info, comparing
